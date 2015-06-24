@@ -15,10 +15,10 @@ exports.load = function(req, res, next, quizId) {
 // GET /quizes
 exports.index = function(req, res) {
 
-  var a_buscar =  req.query.search; 
-  var texto = ""; //Lo uso para rellenar la casilla de busqueda
+  var a_buscar =  req.query.search;   
 
-  if (a_buscar === undefined) {    
+  if (a_buscar === undefined) { 
+    texto = "";   
     models.Quiz.findAll({order: "pregunta"}).then(function(quizes) { //Ordeno las preguntas
       res.render('quizes/index.ejs', { quizes: quizes});
     }).catch(function(error) {next(error);})
